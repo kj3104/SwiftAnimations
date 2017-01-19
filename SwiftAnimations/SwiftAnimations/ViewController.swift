@@ -31,9 +31,8 @@ class ViewController: UIViewController {
     
     func drawCircle(start:CGFloat, end:CGFloat, radius: CGFloat, fillColor:CGColor){
         
-        let path: UIBezierPath = UIBezierPath();
-        path.move(to: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2))
-        path.addArc(withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2), radius: radius, startAngle: start, endAngle: end, clockwise: true)
+        let path: UIBezierPath = UIBezierPath(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2), radius: radius, startAngle: start, endAngle: end, clockwise: true)
+
         
         let layer = CAShapeLayer()
         layer.fillColor = fillColor
