@@ -15,12 +15,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        drawCircle(start: 0.0, end: CGFloat(M_PI)*2, radius: 100, fillColor: UIColor.gray.cgColor)
-        drawCircle(start: 0.0, end: CGFloat(M_PI)*2, radius: 90, fillColor: UIColor.white.cgColor)
+        drawCircle(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),start: 0.0, end: CGFloat(M_PI)*2, radius: 100, fillColor: UIColor.gray.cgColor)
+        drawCircle(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),start: 0.0, end: CGFloat(M_PI)*2, radius: 90, fillColor: UIColor.white.cgColor)
         
-        drawCircleAnim(start:0.0-CGFloat(M_PI/2), end: CGFloat(M_PI*4/3), radius: 95, strokeColor: UIColor.magenta.cgColor, lineWidth: 10)
-        drawCircleAnim(start:0.0-CGFloat(M_PI/2), end: CGFloat(M_PI), radius: 95, strokeColor: UIColor.orange.cgColor, lineWidth: 10)
-        drawCircleAnim(start:0.0-CGFloat(M_PI/2), end: CGFloat(M_PI/2), radius: 95, strokeColor: UIColor.cyan.cgColor, lineWidth: 10)
+        drawCircleAnim(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),start:0.0-CGFloat(M_PI/2), end: CGFloat(M_PI*4/3), radius: 95, strokeColor: UIColor.magenta.cgColor, lineWidth: 10)
+        drawCircleAnim(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),start:0.0-CGFloat(M_PI/2), end: CGFloat(M_PI), radius: 95, strokeColor: UIColor.orange.cgColor, lineWidth: 10)
+        drawCircleAnim(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),start:0.0-CGFloat(M_PI/2), end: CGFloat(M_PI/2), radius: 95, strokeColor: UIColor.cyan.cgColor, lineWidth: 10)
 
     }
 
@@ -29,9 +29,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func drawCircle(start:CGFloat, end:CGFloat, radius: CGFloat, fillColor:CGColor){
+    func drawCircle(arcCenter:CGPoint, start:CGFloat, end:CGFloat, radius: CGFloat, fillColor:CGColor){
         
-        let path: UIBezierPath = UIBezierPath(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2), radius: radius, startAngle: start, endAngle: end, clockwise: true)
+        let path: UIBezierPath = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: start, endAngle: end, clockwise: true)
 
         
         let layer = CAShapeLayer()
@@ -41,9 +41,9 @@ class ViewController: UIViewController {
         self.view.layer.addSublayer(layer)
     }
     
-    func drawCircleAnim(start:CGFloat, end:CGFloat, radius:CGFloat, strokeColor:CGColor, lineWidth:CGFloat){
+    func drawCircleAnim(arcCenter:CGPoint,start:CGFloat, end:CGFloat, radius:CGFloat, strokeColor:CGColor, lineWidth:CGFloat){
         
-        let path: UIBezierPath = UIBezierPath(arcCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2), radius: radius, startAngle: start, endAngle: end, clockwise: true)
+        let path: UIBezierPath = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: start, endAngle: end, clockwise: true)
         
         
         path.lineWidth = 1.0
